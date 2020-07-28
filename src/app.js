@@ -23,14 +23,14 @@ app.use(express.static(publicDirPath))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather app',
-        name: 'CW'
+        name: 'Koh Chan Wen'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About us',
-        name: 'CW'
+        title: 'About',
+        name: 'Koh Chan Wen'
     })
 })
 
@@ -38,7 +38,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help page',
         helpMsg: 'Google yourself',
-        name: 'CW'
+        name: 'Koh Chan Wen'
     })
 })
 
@@ -54,14 +54,16 @@ app.get('/weather', (req, res) => {
         return res.send({error})
     }
 
-        forecast(latitude, longitude, (error, {temp}) => {
+        forecast(latitude, longitude, (error, {temp, feelslike, description} = {}) => {
             if(error) {
                 return res.send({error})
             }
             
             res.send({
                 location: location_geocode,
-                temperature: temp
+                temperature: temp,
+                feels_Like: feelslike,
+                description: description
             })
         })
     })

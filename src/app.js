@@ -37,7 +37,7 @@ app.get('/about', (req, res) => {
 app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help page',
-        helpMsg: 'Google yourself',
+        helpMsg: 'Please contact chanwen1@hotmail.com',
         name: 'Koh Chan Wen'
     })
 })
